@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>printsprint – Etsy Fulfillment App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>printsprint – Fulfillment App for Etsy Sellers</title>
   <style>
     body {
       font-family: sans-serif;
@@ -33,6 +33,14 @@
     ul {
       margin-top: 10px;
     }
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    small {
+      color: #777;
+    }
   </style>
 </head>
 <body>
@@ -40,54 +48,66 @@
   <h1>printsprint – Fulfillment App for Etsy Sellers</h1>
 
   <div class="section">
-    <p><strong>printsprint</strong> is a private B2B fulfillment tool for Etsy sellers. Etsy customers place and pay for their orders directly on Etsy as usual. This app enables sellers to automatically forward those orders to our backend system for production and shipping.</p>
+    <p><strong>printsprint</strong> is a B2B fulfillment tool that helps Etsy sellers streamline their production process. Customers shop and pay directly through Etsy. Once the order is placed, our app forwards it (with permission) to a connected fulfillment backend where production and shipping take place.</p>
   </div>
+
   <div class="section">
-    <h2>How It Works</h2>
+    <h2>🔒 Etsy API Usage</h2>
+    <p>This app uses the Etsy API with explicit OAuth-based authorization from the seller. No data from other sellers or customers is accessed without permission.</p>
+    <p>Endpoints used include:</p>
     <ul>
-      <li>Sellers log in with their Etsy account using OAuth 2.0</li>
-      <li>printsprint accesses order and listing data with permission</li>
-      <li>Our system fulfills the order (production + shipping)</li>
-      <li>Sellers are billed through Stripe for the service</li>
+      <li><code>GET /shops/:shop_id/receipts</code> – Fetch orders</li>
+      <li><code>GET /listings/:listing_id</code> – Retrieve product details</li>
+      <li><code>GET /users/:user_id</code> – Verify seller identity</li>
+    </ul>
+    <p><strong>This app does not intercept or modify Etsy’s checkout or payment process.</strong> All customer transactions take place on Etsy’s platform.</p>
+  </div>
+
+  <div class="section">
+    <h2>🧾 Billing & Fulfillment</h2>
+    <p>The printsprint app bills sellers (not Etsy customers) via Stripe for production and shipping services. Sellers remain the legal merchant of record on Etsy, while printsprint acts as a <strong>declared production partner</strong> and fulfillment provider.</p>
+  </div>
+
+  <div class="section">
+    <h2>🛠️ Project Status</h2>
+    <ul>
+      <li>✅ Etsy OAuth integration complete</li>
+      <li>✅ Order sync (read-only)</li>
+      <li>✅ Stripe billing setup for sellers</li>
+      <li>🔄 In development: Tracking + invoicing system</li>
+      <li>🔜 Planned: Seller dashboard & multi-store support</li>
     </ul>
   </div>
 
   <div class="section">
-    <h2>Etsy API Usage</h2>
-    <p>The app uses the following Etsy API endpoints with seller consent:</p>
-    <p>All data access is read-only and strictly limited to the authenticated shop owner's data. We fully comply with Etsy's <a href="https://www.etsy.com/legal/api/" target="_blank">API Terms of Use</a>.</p>
+    <h2>📜 API Terms & Disclaimer</h2>
+    <p>This application uses Etsy’s API but is not endorsed or certified by Etsy, Inc.</p>
+    <p>All trademarks and copyrights remain the property of their respective owners.</p>
   </div>
 
   <div class="section">
-    <h2>Roadmap</h2>
-    <ul>
-      <li>✅ OAuth-based Etsy shop connection</li>
-      <li>✅ Order import and sync</li>
-      <li>🛠️ Auto-generation of invoices (via Stripe events)</li>
-      <li>🛠️ Tracking integration with shipping partners</li>
-      <li>🛠️ Seller dashboard with order history and billing</li>
-    </ul>
+    <h2>🔐 Privacy Policy (Kurzfassung)</h2>
+    <p>printsprint does not collect personal customer data. Order data is retrieved from Etsy only with explicit permission and used solely for the purpose of order fulfillment. Data is processed securely and is not shared with third parties.</p>
+    <p>See full privacy terms in our upcoming documentation (under development).</p>
   </div>
 
   <div class="section">
-    <h2>Who Is This For?</h2>
-    <p>This app is currently built for internal use with select Etsy sellers. It may be offered to a broader audience in the future depending on demand and Etsy's platform guidelines.</p>
-  </div>
-
-  <div class="section">
-    <h2>Contact</h2>
-    <p>For questions or partnership requests, please email:</p>
-    <p><code>your@email.com</code></p>
+    <h2>📬 Contact</h2>
+    <p>For questions, feedback or partnership inquiries:</p>
+    <p><code>marc@deinefirma.de</code></p>
   </div>
 
   <div class="footer">
-    <p><strong>Impressum / Legal:</strong></p>
-    <p>CodeCalc GmbH<br>
-    Am Seeblick 63<br>
-    40627 Düsseldorft<br>
-    Germany</p>
+    <p><strong>Impressum / Legal Notice:</strong><br>
+      CodeCalc GmbH<br>
+      Am Seeblick 63<br>
+      40627 Düsseldorf<br>
+      Germany<br>
+      Email: <code>mb@codecalc.dev</code>
+    </p>
 
-    <p><strong>Privacy:</strong> This site does not collect or store any personal data. All data processing is handled securely via Stripe and Etsy according to their respective privacy policies.</p>
+    <p><strong>Datenschutz:</strong><br>
+    printsprint speichert keine personenbezogenen Daten von Endkunden. Alle Datenzugriffe erfolgen nur nach OAuth-Freigabe durch den Etsy-Shop-Inhaber. Verarbeitung erfolgt DSGVO-konform auf deutschen Servern. Eine vollständige Datenschutzrichtlinie wird bei Produktveröffentlichung bereitgestellt.</p>
   </div>
 
 </body>

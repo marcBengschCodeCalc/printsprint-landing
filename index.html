@@ -7,58 +7,100 @@
   <style>
     body {
       font-family: sans-serif;
-      max-width: 700px;
+      max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
       line-height: 1.6;
-    }
-    h1 {
       color: #333;
     }
+    h1, h2 {
+      color: #222;
+    }
     .section {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
-    .section h2 {
-      color: #444;
-      margin-top: 20px;
+    img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
     }
-    code {
-      background: #f0f0f0;
-      padding: 2px 4px;
-      border-radius: 4px;
+    .footer {
+      font-size: 0.9em;
+      color: #777;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+    ul {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+
   <h1>printsprint – Fulfillment App for Etsy Sellers</h1>
 
   <div class="section">
-    <p><strong>printsprint</strong> is a private B2B tool built for Etsy sellers to automate order fulfillment. Etsy customers place and pay for orders as usual through Etsy. The app enables sellers to forward those orders to a fulfillment partner (printsprint), who then produces and ships the goods.</p>
+    <p><strong>printsprint</strong> is a private B2B fulfillment tool for Etsy sellers. Etsy customers place and pay for their orders directly on Etsy as usual. This app enables sellers to automatically forward those orders to our backend system for production and shipping.</p>
   </div>
 
   <div class="section">
-    <h2>How it works</h2>
+    <h2>Screenshot / Preview</h2>
+    <p>Below is a preview of the current interface (work in progress):</p>
+    <img src="https://via.placeholder.com/700x400?text=App+Interface+Screenshot" alt="Screenshot of printsprint app interface">
+  </div>
+
+  <div class="section">
+    <h2>How It Works</h2>
     <ul>
-      <li>Sellers log in with their Etsy account using OAuth</li>
-      <li>printsprint accesses order data with permission</li>
-      <li>Fulfillment is triggered in our backend</li>
-      <li>The seller is billed via Stripe for the fulfillment service</li>
+      <li>Sellers log in with their Etsy account using OAuth 2.0</li>
+      <li>printsprint accesses order and listing data with permission</li>
+      <li>Our system fulfills the order (production + shipping)</li>
+      <li>Sellers are billed through Stripe for the service</li>
     </ul>
   </div>
 
   <div class="section">
-    <h2>Who uses this app?</h2>
-    <p>This app is built for my own use as a fulfillment partner, but may be offered to other Etsy sellers in the future.</p>
+    <h2>Etsy API Usage</h2>
+    <p>The app uses the following Etsy API endpoints with seller consent:</p>
+    <ul>
+      <li><code>/shops/:shop_id/receipts</code> – to fetch recent orders</li>
+      <li><code>/listings/:listing_id</code> – to get product details</li>
+      <li><code>/users/:user_id</code> – for identity verification</li>
+    </ul>
+    <p>All data access is read-only and strictly limited to the authenticated shop owner's data. We fully comply with Etsy's <a href="https://www.etsy.com/legal/api/" target="_blank">API Terms of Use</a>.</p>
   </div>
 
   <div class="section">
-    <h2>API Use</h2>
-    <p>The Etsy API is used only with the seller’s permission and only to access the shop's own order and listing data. No scraping or cross-shop data access is involved. Full API Terms: <a href="https://www.etsy.com/legal/api/">Etsy API Terms of Use</a></p>
+    <h2>Roadmap</h2>
+    <ul>
+      <li>✅ OAuth-based Etsy shop connection</li>
+      <li>✅ Order import and sync</li>
+      <li>🛠️ Auto-generation of invoices (via Stripe events)</li>
+      <li>🛠️ Tracking integration with shipping partners</li>
+      <li>🛠️ Seller dashboard with order history and billing</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Who Is This For?</h2>
+    <p>This app is currently built for internal use with select Etsy sellers. It may be offered to a broader audience in the future depending on demand and Etsy's platform guidelines.</p>
   </div>
 
   <div class="section">
     <h2>Contact</h2>
-    <p>For questions, please contact: <code>mb@codecalc.dev</code></p>
+    <p>For questions or partnership requests, please email:</p>
+    <p><code>your@email.com</code></p>
   </div>
+
+  <div class="footer">
+    <p><strong>Impressum / Legal:</strong></p>
+    <p>Marc Bengsch<br>
+    Musterstraße 123<br>
+    12345 Musterstadt<br>
+    Germany</p>
+
+    <p><strong>Privacy:</strong> This site does not collect or store any personal data. All data processing is handled securely via Stripe and Etsy according to their respective privacy policies.</p>
+  </div>
+
 </body>
 </html>
